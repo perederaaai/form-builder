@@ -1,0 +1,31 @@
+hr{
+  background-color: #cceec8;
+  height: 1px;
+  width: 100%;
+}
+
+.answer-block{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.answer-item{
+  padding: 0.4rem;
+  border: 1px solid #7a794a;
+  border-bottom: none;
+  background-color: #dcf19a;
+  h3{
+    font-weight: bold;
+  }
+  .user-answer-title{
+    font-weight: bold;
+  }
+  .user-answer-p{
+    padding: 0.3rem 0.8rem;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+}
+.answer-item:last-child{
+  border-bottom:1px solid #7a794a ;
+}

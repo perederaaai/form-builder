@@ -1,0 +1,67 @@
+<div>
+  <div class="mat-card-header">
+    <h2 mat-dialog-title>{{modalTitle}}</h2>
+    <button type="button" (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+
+  <div mat-dialog-content [formGroup]="form">
+    <div (click)="checkRadio()">
+      <div class="radio-btn">
+        <div>
+          <label>Paragraph
+            <input type="radio" name="radioType" value="paragraph" formControlName="radioType">
+          </label>
+        </div>
+
+        <div>
+          <label>Check List
+            <input type="radio" #checkList name="radioType" value="checkList" formControlName="radioType">
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-text" tabindex="1">
+      <input type="text" placeholder="Add question here..." formControlName="question">
+    </div>
+
+    <div *ngIf="form.get('radioType')?.value === 'checkList'">
+      <div>
+        <div formArrayName="answerOption" class="option-wrap">
+          <button type="button" (click)="addAnswerOption()" class="btn-main">Add another answer</button>
+
+          <div *ngFor="let option of answerOption.controls; let i = index">
+            <div class="input">
+              <app-custom-input
+                class="input"
+                requiredText="Enter the option"
+                [formControlName]="i"
+                placeholder="Enter answer option {{ i +1 }}">
+              </app-custom-input>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-text additional-block">
+      <p>Additional options</p>
+      <div *ngIf="form.get('radioType')?.value === 'checkList'">
+        <label>
+          <input type="checkbox" formControlName="ownAnswer"> Allow user to specify their own answer
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" formControlName="requiredFailed"> This field is required
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" (click)="submit()" class="btn-main" [disabled]="form.invalid" mat-dialog-close>Submit</button>
+  </div>
+
+</div>

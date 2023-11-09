@@ -1,0 +1,20 @@
+
+  <div class="input-wrap" [class]="class"
+       [ngClass]="(control && control.invalid && control.touched) ? 'invalid' : '' "
+  >
+
+  <label [for]="id">{{labelText}}  </label>
+  <input
+    [type]=type
+    [value]="value"
+    [id]="id"
+    [name]="name"
+    [checked]="checked"
+    [placeholder]="placeholder"
+    (input)="changeValue($event)"
+  >
+  <div class="validation" *ngIf="control?.touched && control?.invalid">
+
+    <small *ngIf="control ? control.hasError('required') : undefined">{{requiredText}} <br></small>
+
+  </div></div>

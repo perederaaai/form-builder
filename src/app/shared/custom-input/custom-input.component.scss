@@ -1,0 +1,22 @@
+.input{
+  input{
+    padding: 1rem;
+    width: 100%;
+
+  }
+}
+.invalid {
+  //color: red;
+  label{
+    color: black;
+  }
+  small{
+    color: red;
+  }
+
+  input {
+    border: 1px solid red;
+  }
+
+}
+

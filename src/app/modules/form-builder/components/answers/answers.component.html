@@ -1,0 +1,40 @@
+<div class="content-wrap">
+  <h3>Result of quiz is...</h3>
+  <div *ngIf="answerData" class="answer-block">
+<!--    <div *ngFor="let answer of answerData" class="answer-item">-->
+<!--      <h3>Question: {{answer.question | titlecase}}</h3>-->
+<!--      <hr>-->
+
+<!--      <div *ngFor="let option of answer.answer; let i = index">-->
+<!--        <p>{{i + 1}}. {{Object.keys(option)}}</p>-->
+<!--      </div>-->
+
+<!--      <div *ngIf="answer.userAnswer">-->
+<!--        <h4 class="user-answer-title">User own answer is...</h4>-->
+<!--&lt;!&ndash;        <p class="user-answer-p">{{answer.userAnswer | titlecase}}</p>&ndash;&gt;-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--    <hr>-->
+
+
+    <div *ngFor="let resultWrap of (result$ | async)">
+      <div *ngFor="let result of resultWrap.result" class="answer-item">
+        <h4>Question: {{result.question | titlecase}} </h4>
+        <hr>
+        <div *ngIf="result.answer">
+          <div *ngFor="let option of result.answer">
+            <div *ngFor="let optionsResult of getOptionKey(option);let i = index ">
+              <p>{{i +1}}. {{optionsResult | titlecase}}</p>
+            </div>
+            <div *ngIf="result.userAnswer">
+              <p class="user-answer-p">
+                {{result.userAnswer}}
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

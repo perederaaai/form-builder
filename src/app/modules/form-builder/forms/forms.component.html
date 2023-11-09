@@ -1,0 +1,33 @@
+<div class="content-wrap">
+  <h2 class="title">{{title}}</h2>
+  <div class="form">
+    <button (click)="openDialog()" class="main-btn">Add new question</button>
+  </div>
+  <div *ngIf="(quiz$ | async)?.length" class="answer-wrap" [formGroup]="answerFormGroup">
+    <div *ngFor="let quizes of (quiz$ | async)" formArrayName="answerFormArray">
+      <div *ngFor=" let quiz of quizes.quiz; let i = index">
+        <div [formGroupName]="i">
+          <h3>
+            {{quiz.question }}
+          </h3>
+          <div *ngIf="quiz.answerOption?.length">
+            <div *ngFor="let opt of quiz.answerOption;let j = index" formArrayName="answer">
+              <label formGroupName="0">
+                <input type="checkbox" [formControlName]="opt">
+                {{opt}}
+              </label>
+            </div>
+          </div>
+
+          <div class="answer-other" *ngIf="quiz.ownAnswer">
+            <p>Other</p>
+            <input type="text" formControlName="userAnswer">
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <hr>
+    <button type="submit" class="main-btn" (click)="submit()">Show Result</button>
+  </div>
+</div>
