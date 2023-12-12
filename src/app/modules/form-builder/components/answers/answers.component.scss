@@ -23,7 +23,8 @@ hr{
   .user-answer-p{
     padding: 0.3rem 0.8rem;
     margin: 0;
-    flex-wrap: wrap;
+    width: 85%;
+    overflow: auto;
   }
 }
 .answer-item:last-child{

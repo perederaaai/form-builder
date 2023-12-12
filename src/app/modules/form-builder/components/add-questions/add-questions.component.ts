@@ -17,6 +17,7 @@ export class AddQuestionsComponent implements OnInit {
   @ViewChild('checkList') check: ElementRef<HTMLInputElement>;
 
   public question: string;
+
   public form: FormGroup;
   public modalTitle: string = 'Add a new question';
   public quiz$: Observable<IQuizQuestion>;

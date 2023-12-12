@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomInputComponent } from './custom-input/custom-input.component';
+import { CutStringPipe } from '../pipe/cut-string.pipe';
 
 
 
 @NgModule({
-  declarations: [CustomInputComponent],
+  declarations: [CustomInputComponent, CutStringPipe],
   imports: [
     CommonModule,
   ],
-  exports:[CustomInputComponent]
+  exports: [CustomInputComponent, CutStringPipe]
 })
 export class SharedModule { }
